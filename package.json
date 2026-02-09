@@ -2,7 +2,7 @@
   "name": "ghq-launcher",
   "displayName": "ghq-launcher",
   "publisher": "takoyakidath",
-  "icon": "images/icon.svg",
+  "icon": "images/icon.png",
   "description": "",
   "version": "0.0.1",
   "engines": {
