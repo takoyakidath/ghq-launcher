@@ -1,29 +1,48 @@
 {
   "name": "ghq-launcher",
-  "displayName": "ghq-launcher",
+  "displayName": "GHQ Launcher",
   "publisher": "takoyakidath",
-  "icon": "images/icon.png",
-  "description": "",
+  "description": "Open ghq repositories from the status bar.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.109.0"
   },
-  "categories": [
-    "Other"
+  "categories": ["Other"],
+  "icon": "images/icon.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/takoyakidath/ghq-launcher.git"
+  },
+  "activationEvents": [
+    "onCommand:ghqStatusPicker.open",
+    "onStartupFinished"
   ],
-  "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "ghq-extention.helloWorld",
-        "title": "Hello World"
+        "command": "ghqStatusPicker.open",
+        "title": "GHQ: Open Repository"
       }
     ],
-    "repository": {
-  "type": "git",
-  "url": "https://github.com/takoyakidath/ghq-launcher.git"
-}
+    "configuration": {
+      "title": "GHQ Launcher",
+      "properties": {
+        "ghqStatusPicker.openInNewWindow": {
+          "type": "boolean",
+          "default": true,
+          "description": "Open the selected repository in a new VS Code window."
+        },
+        "ghqStatusPicker.maxMRU": {
+          "type": "number",
+          "default": 15,
+          "minimum": 0,
+          "maximum": 100,
+          "description": "How many recently opened repositories to keep."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -42,34 +61,5 @@
     "typescript": "^5.9.3",
     "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2"
-  },
-"activationEvents": [
-  "onCommand:ghqStatusPicker.open",
-  "onStartupFinished"
-],
-
-"contributes": {
-  "commands": [
-    {
-      "command": "ghqStatusPicker.open",
-      "title": "GHQ: Open Repository"
-    }
-  ],
-  "configuration": {
-    "title": "GHQ Status Picker",
-    "properties": {
-      "ghqStatusPicker.openInNewWindow": {
-        "type": "boolean",
-        "default": true
-      },
-      "ghqStatusPicker.maxMRU": {
-        "type": "number",
-        "default": 15,
-        "minimum": 0,
-        "maximum": 100
-      }
-    }
   }
-}
-
 }
